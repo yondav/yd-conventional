@@ -1,0 +1,52 @@
+cz_yd_conventional - Commitizen Plugin for YD-Conventional Commits
+
+This plugin is designed to enforce conventional commit messages for yondav projects, with additional support for Linear issue IDs.
+
+Features:
+
+Automatic detection of Linear issue IDs (e.g., YD-12345) from branch names or commit scopes.
+Supports standard commit types like "feat," "fix," "refactor," and more.
+Ensures commit scopes are correctly formatted, with issue IDs prefixed by "ref."
+Generates changelogs based on the conventional commits.
+Commit Message Structure:
+
+<type>: Describes the type of change (e.g., "feat," "fix," "docs").
+<scope>: Contains the issue ID or the specific area affected by the change.
+<subject>: A brief summary of the change.
+<body>: (Optional) A more detailed description of the change.
+<footer>: (Optional) Additional information, including breaking changes or references to other issues.
+Examples:
+
+Basic Fix Commit:
+fix(ref YD-2000): correct minor typos in code
+
+see the issue for details on the typos fixed
+
+ref YD-2012
+
+Feature Commit with Scope:
+feat(ui): add new button component
+
+the new button component allows users to submit forms with a single click
+
+Breaking Change Commit:
+refactor(core)!: update API endpoints for better consistency
+
+BREAKING CHANGE: The /old-endpoint has been removed in favor of /new-endpoint.
+
+How It Works:
+
+If your branch is named something like "feature/YD-1234-add-login," the plugin will automatically extract "YD-1234" and use it as the scope of your commit.
+If no issue ID is found in the branch name, you can manually enter it when prompted, or provide a different scope if necessary.
+Best Practices:
+
+Keep commits atomic—each commit should represent a single, logical change.
+Use descriptive subjects—keep your commit messages clear and concise.
+Document breaking changes—always provide a detailed explanation in the footer when introducing breaking changes.
+Installation:
+To use this plugin with Commitizen, ensure it is installed in your environment. Configure your .cz.yaml or equivalent configuration file to use cz_yd_conventional as the Commitizen type.
+
+Example .cz.yaml configuration:
+commitizen:
+name: cz_yd_conventional
+version: 0.1.0
